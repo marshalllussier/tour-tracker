@@ -40,3 +40,23 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+/src/assets/fonts/Gotham-Black.otf
+/src/assets/fonts/Gotham-Bold.otf
+/src/assets/fonts/Gotham-BookItalic.otf
+/src/assets/fonts/Gotham-Light.otf
+/src/assets/fonts/Gotham-Thin.otf
+/src/assets/fonts/Gotham-ThinItalic.otf
+/src/assets/fonts/Gotham-UltraItalic.otf
+/src/assets/fonts/Gotham-XLight.otf
+/src/assets/fonts/Gotham-XLightItalic.otf
+/src/assets/fonts/GothamBold.ttf
+/src/assets/fonts/GothamBoldItalic.ttf
+/src/assets/fonts/GothamBook.ttf
+/src/assets/fonts/GothamBookItalic.ttf
+/src/assets/fonts/GothamLight.ttf
+/src/assets/fonts/GothamLightItalic.ttf
+/src/assets/fonts/GothamMedium.ttf
+/src/assets/fonts/GothamMedium_1.ttf
+/src/assets/fonts/GothamMediumItalic.ttf
+/src/assets/banner.png
+/src/assets/Spotify_icon.svg

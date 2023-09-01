@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {ScrollService} from "../services/scroll.service";
-import {AuthGuardService} from "../services/auth-guard.service";
 
 @Component({
   selector: 'app-home',
@@ -10,7 +9,7 @@ import {AuthGuardService} from "../services/auth-guard.service";
 export class HomeComponent {
   title: string = 'Tour Tracker';
 
-  constructor(private scrollService : ScrollService, private authGuardService : AuthGuardService) { }
+  constructor(private scrollService : ScrollService) { }
 
   authenticateUser() {
     const clientId = 'ddb750fd92ac45229a5312c00fbef4a2';
