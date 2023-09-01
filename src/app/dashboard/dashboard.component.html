@@ -1,0 +1,20 @@
+<p style="color:white">test</p>
+<div class="how-it-works" id="how-it-works">
+
+  <div *ngIf="username">
+    Welcome, {{ username }}
+  </div>
+
+</div>
+<div class="something-else" id="something-else">
+
+  <ul>
+    <li *ngFor="let artist of artists">
+      {{ artist.name }}
+      <img style="height: 75px; width:75px;" src="{{artist.imageUrl}}">
+    </li>
+  </ul>
+
+</div>
+
+<p style="color:white">test 2</p>

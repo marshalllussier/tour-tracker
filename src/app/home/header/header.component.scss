@@ -1,0 +1,49 @@
+.header {
+  background-color: black;
+  color: white;
+  width: 100vw;
+  height: 75px;
+}
+
+.button-container {
+  margin: auto;
+  height: 75px;
+  width: 800px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.logo {
+  margin-top: 25px;
+  height: 80px;
+  width: 80px;
+  z-index: 1;
+  border-radius: 50%;
+  box-shadow: 0 0 5px 1px #1CD760,
+  0 0 10px 2px rgba(28,216,96,0.2),
+  0 0 25px 5px rgba(28,215,96,0.1);
+  transition: width 0.3s ease, height 0.3s ease, margin-top 0.3s ease;
+}
+
+.button {
+  height: 75px;
+  width:75px;
+  border: none;
+  background: none !important;
+  color: inherit;
+  padding: 0 !important;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-family: GothamBold, serif;
+}
+
+.active-button {
+  height: 75px;
+  width: 75px;
+  border-bottom: 2px solid #1CD760;
+}
