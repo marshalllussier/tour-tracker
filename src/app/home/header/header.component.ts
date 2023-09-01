@@ -19,8 +19,8 @@ export class HeaderComponent {
       logoElement.style.width = '40px';
       logoElement.style.marginTop = '0px'
       if (scrollHeight < 530) { this.buttonSelection = ""}
-      if (scrollHeight > 530) { this.buttonSelection = "how-it-works"}
-      if (scrollHeight > 930) { this.buttonSelection = "something-else"}
+      if (scrollHeight > 530) { this.buttonSelection = "overview"}
+      if (scrollHeight > 930) { this.buttonSelection = "how-it-works"}
       if (scrollHeight > 1330) { this.buttonSelection = "support-us"}
       if (scrollHeight > 1650) { this.buttonSelection = "contact-us"}
 
@@ -37,7 +37,6 @@ export class HeaderComponent {
   scrollToElement(target : string): void {
     const targetElement = document.getElementById(target) as HTMLElement;
     this.scrollService.scrollToElement(targetElement);
-    // this.buttonSelection = target;
   }
 
 }

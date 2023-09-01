@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {Artist, SpotifyService} from "../services/spotify.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {AuthGuardService} from "../services/auth-guard.service";
+import {TicketmasterService} from "../services/ticketmaster.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -11,12 +12,14 @@ import {AuthGuardService} from "../services/auth-guard.service";
 export class DashboardComponent {
   username: string = '';
   artists: Artist[] = [];
+  artistEvents = new Map<string, any[]>();
 
-  constructor(private spotifyService: SpotifyService, private snackbar: MatSnackBar, private authGuardService : AuthGuardService) {
+  constructor(private spotifyService: SpotifyService, private snackbar: MatSnackBar, private authGuardService : AuthGuardService, private ticketmasterService : TicketmasterService) {
   }
 
   ngOnInit() {
     this.handleSpotifyAuthorization()
+    // this.ticketMasterSearch()
   }
 
   handleSpotifyAuthorization() {
@@ -28,6 +31,8 @@ export class DashboardComponent {
         data => this.handleSuccessfulAuthorization(data),
         err => this.handleError(err)
       );
+    window.history.pushState({}, document.title, "/dashboard");
+
   }
 
   private getCodeFromUrl(): string | null {
@@ -54,8 +59,10 @@ export class DashboardComponent {
   private fetchTopArtists(accessToken: string) {
     this.spotifyService.getTopArtists(accessToken)
       .subscribe(
-        data => { this.handleTopArtists(data); },
-        err => this.handleError(err)
+        data => {
+          this.handleTopArtists(data);
+          this.ticketMasterSearch();
+          },err => this.handleError(err)
       );
   }
 
@@ -66,6 +73,21 @@ export class DashboardComponent {
       imageUrl: item.images && item.images[0] ? item.images[0].url : '',
       followers: item.followers.total
     }));
+  }
+
+  private ticketMasterSearch() {
+    console.log("ffff")
+    console.log(this.artists)
+    this.artists.forEach(artist => {
+      console.log("name", artist.name);
+      this.ticketmasterService.searchEventsByArtist(artist.name).subscribe(response => {
+        console.log("event call");
+        this.artistEvents.set(artist.name, response._embedded ? response._embedded.events : []);
+        console.log("response", response)
+      }, error => {
+        console.log(error)
+      });
+    });
   }
 
   private handleError(err: any) {

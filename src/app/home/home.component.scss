@@ -46,7 +46,7 @@
   margin-top: 10px;
 }
 
-.how-it-works, .something-else, .support-us, .contact-us {
+.overview, .how-it-works, .support-us, .contact-us {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,12 +57,12 @@
   font-family: GothamBold, serif;
 }
 
-.how-it-works {
+.overview {
   background-color: #212121;
   height: 400px;
 }
 
-.something-else {
+.how-it-works {
   height: 400px;
 }
 
@@ -74,18 +74,6 @@
 .contact-us {
   background-color: #b3b3b3;
   height: 400px;
-}
-
-.footer {
-  font-size: 2rem;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 200px;
-  text-align: center;
-  text-transform: uppercase;
-  font-family: GothamBold, serif;
 }
 
 

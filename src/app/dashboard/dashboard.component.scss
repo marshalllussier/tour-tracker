@@ -8,3 +8,31 @@
   font-size: 2rem;
   font-family: GothamBold, serif;
 }
+
+.events {
+  color: white
+}
+
+.event-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+
+  th, td {
+    text-align: left;
+    padding: 8px 16px;
+    border: 1px solid #ccc;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  tbody tr:nth-child(odd) {
+    background-color: #fff;
+  }
+}

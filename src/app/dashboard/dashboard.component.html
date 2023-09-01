@@ -6,7 +6,7 @@
   </div>
 
 </div>
-<div class="something-else" id="something-else">
+<div class="something-else">
 
   <ul>
     <li *ngFor="let artist of artists">
@@ -18,3 +18,54 @@
 </div>
 
 <p style="color:white">test 2</p>
+
+<div>
+  <table class="event-table">
+    <thead>
+    <tr>
+      <th>Artist</th>
+      <th>Event Name</th>
+      <th>Event Date</th>
+      <th>Venue</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let artist of artists">
+      <ng-container *ngIf="artistEvents.get(artist.name)">
+        <tr *ngIf="artistEvents!.get(artist.name)?.length! > 0; else noEvents">
+          <td [attr.rowspan]="artistEvents.get(artist.name)?.length">{{ artist.name }}</td>
+          <td>{{ artistEvents.get(artist.name)?.[0]?.name }}</td>
+          <td>{{ artistEvents.get(artist.name)?.[0]?.dates?.start?.localDate }}</td>
+          <td>
+            <ng-container *ngIf="artistEvents.get(artist.name)?.[0]?._embedded?.venues?.[0]?.name; else emptyVenue">
+              {{ artistEvents.get(artist.name)?.[0]?._embedded?.venues?.[0]?.name }}
+            </ng-container>
+            <ng-template #emptyVenue></ng-template>
+          </td>
+        </tr>
+        <ng-template #noEvents>
+          <tr>
+            <td>{{ artist.name }}</td>
+            <td colspan="3">No events</td>
+          </tr>
+        </ng-template>
+        <ng-container *ngFor="let event of artistEvents.get(artist.name)?.slice(1)">
+          <tr>
+            <td>{{ event?.name }}</td>
+            <td>{{ event?.dates?.start?.localDate }}</td>
+            <td>
+              <ng-container *ngIf="event?._embedded?.venues?.[0]?.name; else emptyVenue">
+                {{ event._embedded.venues[0].name }}
+              </ng-container>
+              <ng-template #emptyVenue></ng-template>
+            </td>
+          </tr>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+    </tbody>
+  </table>
+</div>
+
+
+

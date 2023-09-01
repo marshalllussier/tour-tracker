@@ -11,6 +11,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {RouterModule, Routes} from "@angular/router";
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
+import { FooterComponent } from './home/footer/footer.component';
 
 const appRoutes : Routes = [
   { path: '', component: HomeComponent },
@@ -24,7 +25,8 @@ const appRoutes : Routes = [
     AppComponent,
     HeaderComponent,
     DashboardComponent,
-    HomeComponent
+    HomeComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
