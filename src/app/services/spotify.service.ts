@@ -17,7 +17,7 @@ export interface Artist {
 export class SpotifyService {
 
   private artistsData: Artist[] = [];
-  private limit : number = 5;
+  private limit : number = 25;
 
   setArtistsData(artists: Artist[]) {
     this.artistsData = artists;

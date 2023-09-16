@@ -19,7 +19,6 @@ export class DashboardComponent {
 
   ngOnInit() {
     this.handleSpotifyAuthorization()
-    // this.ticketMasterSearch()
   }
 
   handleSpotifyAuthorization() {
@@ -76,12 +75,8 @@ export class DashboardComponent {
   }
 
   private ticketMasterSearch() {
-    console.log("ffff")
-    console.log(this.artists)
     this.artists.forEach(artist => {
-      console.log("name", artist.name);
       this.ticketmasterService.searchEventsByArtist(artist.name).subscribe(response => {
-        console.log("event call");
         this.artistEvents.set(artist.name, response._embedded ? response._embedded.events : []);
         console.log("response", response)
       }, error => {

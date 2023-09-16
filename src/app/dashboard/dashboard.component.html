@@ -27,6 +27,7 @@
       <th>Event Name</th>
       <th>Event Date</th>
       <th>Venue</th>
+      <th>City</th>
     </tr>
     </thead>
     <tbody>
@@ -59,6 +60,10 @@
               </ng-container>
               <ng-template #emptyVenue></ng-template>
             </td>
+            <td *ngIf="event._embedded?.venues[0]?.city; else emptyField">
+              {{ event._embedded.venues[0].city.name }}
+            </td>
+            <ng-template #emptyField></ng-template>
           </tr>
         </ng-container>
       </ng-container>
