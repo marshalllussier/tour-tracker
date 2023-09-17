@@ -22,7 +22,7 @@ export class HeaderComponent {
       if (scrollHeight > 690) { this.buttonSelection = "overview"}
       if (scrollHeight > 930) { this.buttonSelection = "frequently-asked-questions"}
       if (scrollHeight > 1490) { this.buttonSelection = "who-we-are"}
-      if (scrollHeight > 1600) { this.buttonSelection = "contact-us"}
+      if (scrollHeight > 1720) { this.buttonSelection = "contact-us"}
 
     } else {
       logoElement.style.height = '80px';

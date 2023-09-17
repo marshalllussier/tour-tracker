@@ -1,4 +1,4 @@
 @font-face {
   font-family: GothamBold;
-  src: url("/assets/fonts/Gotham-Bold.otf") format("opentype");
+  src: url("src/assets/fonts/Gotham-Bold.otf") format("opentype");
 }
