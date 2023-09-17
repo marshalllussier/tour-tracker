@@ -1,19 +1,33 @@
 <app-header></app-header>
 
 <div class="banner" id="home">
-  <img src="assets/banner.png" class="banner-image" alt="concert">
+  <img src="../../{{selectedImage}}" class="banner-image" alt="concert">
   <div class="banner-text">
     <h1>Welcome to {{title}}</h1>
-    <button mat-button class="login-button" (click)="authenticateUser()">GET STARTED</button>
 
-    <h6>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet ipsum consequat, hendrerit libero at, aliquam turpis. Praesent justo turpis, rhoncus ut finibus nec, condimentum at lacus. In enim diam, lacinia a justo non, tempus tempor dolor. Vivamus lobortis tempus auctor. Sed vel velit at nisl lobortis cursus nec eget est. Maecenas ut dolor mauris.</h6>
+    <h4>Your Spotify playlist, now on tour. Ready to rock?</h4>
+
+    <button mat-button class="login-button" (click)="authenticateUser()">GET STARTED</button>
 
   </div>
 </div>
 
-<div class="overview" id="overview">Overview</div>
-<div class="how-it-works" id="how-it-works">How it works</div>
-<div class="support-us" id="support-us">Support us</div>
-<div class="contact-us" id="contact-us">Contact us</div>
+<div class="overview" id="overview">
+
+  <div class="overview-text">
+    <h4>Dive right into a sea of music adventures with {{title}}. With just a click, we turn your Spotify playlists into a golden ticket to live events, helping you find out where your favorite artists are performing next, all in one place.</h4>
+    <br>
+    <h4>Say goodbye to the endless googling. We do the hard work for you, bringing together information from various sources to give you a simple, easy-to-use roadmap to live music based on your personal taste.</h4>
+    <br>
+    <h4>Ready for the easiest way to track concerts? Get started with {{title}} and step into a world where every day offers a chance to experience the live music you love, without the hassle.</h4>
+  </div>
+
+</div>
+
+<div class="frequently-asked-questions" id="frequently-asked-questions">Frequently Asked Questions</div>
+
+<div class="who-we-are" id="who-we-are">Who we are</div>
+
+<div class="contact-us" id="contact-us">Contact Us</div>
 
 <app-footer></app-footer>

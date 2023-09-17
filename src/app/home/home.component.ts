@@ -7,9 +7,15 @@ import {ScrollService} from "../services/scroll.service";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  title: string = 'Tour Tracker';
+  title: string = 'Track To Track';
+  selectedImage: string = '';
+  private bannerImages = [...Array.from({ length: 11 }, (v, k) => `assets/images/banners/banner${k + 1}.jpg`), 'assets/images/banners/banner.png'];
 
-  constructor(private scrollService : ScrollService) { }
+
+
+  constructor(private scrollService : ScrollService) {
+    this.selectRandomImage();
+  }
 
   authenticateUser() {
     const clientId = 'ddb750fd92ac45229a5312c00fbef4a2';
@@ -35,6 +41,12 @@ export class HomeComponent {
         });
       }
     });
+  }
+
+  selectRandomImage() {
+    const randomIndex = Math.floor(Math.random() * this.bannerImages.length);
+    this.selectedImage = this.bannerImages[randomIndex];
+    console.log('Selected Image:', this.selectedImage);
   }
 
 }

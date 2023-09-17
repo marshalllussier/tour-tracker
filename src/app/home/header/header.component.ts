@@ -18,11 +18,11 @@ export class HeaderComponent {
       logoElement.style.height = '40px';
       logoElement.style.width = '40px';
       logoElement.style.marginTop = '0px'
-      if (scrollHeight < 530) { this.buttonSelection = ""}
-      if (scrollHeight > 530) { this.buttonSelection = "overview"}
-      if (scrollHeight > 930) { this.buttonSelection = "how-it-works"}
-      if (scrollHeight > 1330) { this.buttonSelection = "support-us"}
-      if (scrollHeight > 1650) { this.buttonSelection = "contact-us"}
+      if (scrollHeight < 690) { this.buttonSelection = ""}
+      if (scrollHeight > 690) { this.buttonSelection = "overview"}
+      if (scrollHeight > 930) { this.buttonSelection = "frequently-asked-questions"}
+      if (scrollHeight > 1490) { this.buttonSelection = "who-we-are"}
+      if (scrollHeight > 1600) { this.buttonSelection = "contact-us"}
 
     } else {
       logoElement.style.height = '80px';
