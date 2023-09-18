@@ -46,7 +46,6 @@ export class HomeComponent {
   selectRandomImage() {
     const randomIndex = Math.floor(Math.random() * this.bannerImages.length);
     this.selectedImage = this.bannerImages[randomIndex];
-    console.log('Selected Image:', this.selectedImage);
   }
 
 }
