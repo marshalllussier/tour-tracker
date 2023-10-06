@@ -19,58 +19,25 @@
 
 <p style="color:white">test 2</p>
 
-<div>
-  <table class="event-table">
-    <thead>
-    <tr>
-      <th>Artist</th>
-      <th>Event Name</th>
-      <th>Event Date</th>
-      <th>Venue</th>
-      <th>City</th>
-    </tr>
-    </thead>
-    <tbody>
-    <ng-container *ngFor="let artist of artists">
-      <ng-container *ngIf="artistEvents.get(artist.name)">
-        <tr *ngIf="artistEvents!.get(artist.name)?.length! > 0; else noEvents">
-          <td [attr.rowspan]="artistEvents.get(artist.name)?.length">{{ artist.name }}</td>
-          <td>{{ artistEvents.get(artist.name)?.[0]?.name }}</td>
-          <td>{{ artistEvents.get(artist.name)?.[0]?.dates?.start?.localDate }}</td>
-          <td>
-            <ng-container *ngIf="artistEvents.get(artist.name)?.[0]?._embedded?.venues?.[0]?.name; else emptyVenue">
-              {{ artistEvents.get(artist.name)?.[0]?._embedded?.venues?.[0]?.name }}
-            </ng-container>
-            <ng-template #emptyVenue></ng-template>
-          </td>
-        </tr>
-        <ng-template #noEvents>
-          <tr>
-            <td>{{ artist.name }}</td>
-            <td colspan="3">No events</td>
-          </tr>
-        </ng-template>
-        <ng-container *ngFor="let event of artistEvents.get(artist.name)?.slice(1)">
-          <tr>
-            <td>{{ event?.name }}</td>
-            <td>{{ event?.dates?.start?.localDate }}</td>
-            <td>
-              <ng-container *ngIf="event?._embedded?.venues?.[0]?.name; else emptyVenue">
-                {{ event._embedded.venues[0].name }}
-              </ng-container>
-              <ng-template #emptyVenue></ng-template>
-            </td>
-            <td *ngIf="event._embedded?.venues[0]?.city; else emptyField">
-              {{ event._embedded.venues[0].city.name }}
-            </td>
-            <ng-template #emptyField></ng-template>
-          </tr>
-        </ng-container>
-      </ng-container>
-    </ng-container>
-    </tbody>
-  </table>
+<div style="color:white" *ngIf="artistEventsArray.length > 0">
+  <h2>Events</h2>
+  <ul>
+    <li *ngFor="let event of artistEventsArray">
+      <h3>{{ event?.name }}</h3>
+<!--      <img [src]="event?.image" alt="{{ event?.name }}">-->
+      <p>Event Status: {{ event?.eventStatus }}</p>
+      <p>Start Date: {{ event?.startDate }}</p>
+      <p>End Date: {{ event?.endDate }}</p>
+      <p><a [href]="event?.url" target="_blank">Event Details</a></p>
+      <p><a [href]="event?.location?.url" target="_blank">{{ event?.location?.name }}</a></p>
+      <address>
+        {{ event?.location?.address?.streetAddress }},
+        {{ event?.location?.address?.addressLocality }},
+        {{ event?.location?.address?.addressRegion?.name }},
+        {{ event?.location?.address?.addressCountry?.name }},
+        {{ event?.location?.address?.postalCode }}
+      </address>
+    </li>
+  </ul>
 </div>
-
-
 

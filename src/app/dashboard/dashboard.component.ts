@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {Artist, SpotifyService} from "../services/spotify.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {AuthGuardService} from "../services/auth-guard.service";
-import {TicketmasterService} from "../services/ticketmaster.service";
+import {JambaseService} from "../services/jambase.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -14,7 +14,7 @@ export class DashboardComponent {
   artists: Artist[] = [];
   artistEvents = new Map<string, any[]>();
 
-  constructor(private spotifyService: SpotifyService, private snackbar: MatSnackBar, private authGuardService : AuthGuardService, private ticketmasterService : TicketmasterService) {
+  constructor(private spotifyService: SpotifyService, private snackbar: MatSnackBar, private authGuardService : AuthGuardService, private jambaseService : JambaseService) {
   }
 
   ngOnInit() {
@@ -60,7 +60,7 @@ export class DashboardComponent {
       .subscribe(
         data => {
           this.handleTopArtists(data);
-          this.ticketMasterSearch();
+          this.jambaseSearch();
           },err => this.handleError(err)
       );
   }
@@ -74,15 +74,19 @@ export class DashboardComponent {
     }));
   }
 
-  private ticketMasterSearch() {
+  private jambaseSearch() {
     this.artists.forEach(artist => {
-      this.ticketmasterService.searchEventsByArtist(artist.name).subscribe(response => {
-        this.artistEvents.set(artist.name, response._embedded ? response._embedded.events : []);
+      this.jambaseService.searchEventsByArtist(artist.name).subscribe(response => {
+        this.artistEvents.set(artist.name, response.events || []);
         console.log("response", response)
       }, error => {
         console.log(error)
       });
     });
+  }
+
+  get artistEventsArray(): any[] {
+    return Array.from(this.artistEvents.values()).flat() || [];
   }
 
   private handleError(err: any) {
