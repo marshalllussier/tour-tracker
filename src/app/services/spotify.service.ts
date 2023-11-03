@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 
 export interface Artist {
   name: string;
+  id: string;
   genres: string[];
   imageUrl: string;
   followers: number;

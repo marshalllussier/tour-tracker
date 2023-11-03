@@ -68,6 +68,7 @@ export class DashboardComponent {
   private handleTopArtists(data: any) {
     this.artists = data.items.map((item: any) => ({
       name: item.name,
+      id: item.id,
       genres: item.genres,
       imageUrl: item.images && item.images[0] ? item.images[0].url : '',
       followers: item.followers.total
