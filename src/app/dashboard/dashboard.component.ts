@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { AuthService } from "../services/auth.service";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { Artist } from "../../assets/models/artist.model";
 
 @Component({
   selector: 'app-dashboard',
@@ -10,6 +11,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class DashboardComponent implements OnInit {
   public username: string | undefined;
+  public topArtists: Artist[] = [];
   isLoading = true;
 
   constructor(
@@ -28,6 +30,7 @@ export class DashboardComponent implements OnInit {
           data => {
             this.authService.saveAuthData(data.access_token, data.refresh_token, data.expires_in);
             this.getUserData(data.access_token);
+            this.getTopArtists(data.access_token)
             history.replaceState({}, '', '/dashboard');
           },
           error => console.error(error)
@@ -36,6 +39,7 @@ export class DashboardComponent implements OnInit {
         const accessToken = localStorage.getItem('access_token');
         if (accessToken) {
           this.getUserData(accessToken);
+          this.getTopArtists(accessToken)
           history.replaceState({}, '', '/dashboard');
         }
       }
@@ -43,6 +47,15 @@ export class DashboardComponent implements OnInit {
     setTimeout(() => {
       this.isLoading = false;
     }, 2000);
+  }
+
+
+  logout() {
+    this.authService.logout();
+    this.snackBar.open('Successfully signed out', 'Close', {
+      duration: 4000,
+    });
+    this.router.navigate(['/']);
   }
 
   getUserData(accessToken: string) {
@@ -54,12 +67,13 @@ export class DashboardComponent implements OnInit {
     );
   }
 
-  logout() {
-    this.authService.logout();
-    this.snackBar.open('Successfully signed out', 'Close', {
-      duration: 4000,
-    });
-    this.router.navigate(['/']);
+  getTopArtists(accessToken: string) {
+    this.authService.getTopArtists(accessToken).subscribe(
+      artists => {
+        this.topArtists = artists;
+      },
+      error => console.error(error)
+    );
   }
 
 }

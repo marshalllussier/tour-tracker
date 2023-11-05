@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
 import { environment} from "../../assets/environments/environment.dev";
-import {Observable} from "rxjs";
-import {HttpClient} from "@angular/common/http";
+import { Artist } from "../../assets/models/artist.model";
+import { Observable } from "rxjs";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root',
@@ -41,14 +43,7 @@ export class AuthService {
     return expiration !== null && new Date() < new Date(expiration);
   }
 
-  getUserData(accessToken: string): Observable<any> {
-    const headers = {
-      'Authorization': `Bearer ${accessToken}`
-    };
-    return this.httpClient.get('https://api.spotify.com/v1/me', { headers });
-  }
-
-  private generateRandomState(): string {
+  generateRandomState(): string {
     const array = new Uint32Array(1);
     window.crypto.getRandomValues(array);
     return array[0].toString(16);
@@ -59,6 +54,31 @@ export class AuthService {
     localStorage.removeItem('refresh_token');
     localStorage.removeItem('expiration');
     localStorage.removeItem('spotify_auth_state');
+  }
+
+  getUserData(accessToken: string): Observable<any> {
+    const headers = {
+      'Authorization': `Bearer ${accessToken}`
+    };
+    return this.httpClient.get('https://api.spotify.com/v1/me', { headers });
+  }
+
+  getTopArtists(accessToken: string): Observable<Artist[]> {
+    const headers = {
+      'Authorization': `Bearer ${accessToken}`
+    };
+    return this.httpClient.get<any>('https://api.spotify.com/v1/me/top/artists?limit=5', { headers })
+      .pipe(
+        map(response => response.items.map((item: any) => {
+          const image = item.images.length > 0 ? item.images[0].url : null;
+          return new Artist(
+            item.name,
+            item.id,
+            item.genres,
+            image
+          );
+        }))
+      );
   }
 
 }

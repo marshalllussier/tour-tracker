@@ -5,6 +5,18 @@
   <p style="color:white">Welcome, {{ username }}!</p>
 </div>
 
+<div *ngIf="topArtists.length > 0">
+  <h3 style="color:white">Your Top Artists:</h3>
+  <ul>
+    <li style="color:white" *ngFor="let artist of topArtists">
+      <p>{{ artist.name }}</p>
+      <p>Genres: {{ artist.genres.join(', ') }}</p>
+      <p>Spotify ID: {{ artist.id }}</p>
+      <img *ngIf="artist.imageUrl" [src]="artist.imageUrl" alt="{{ artist.name }}" style="max-width: 50px;">
+    </li>
+  </ul>
+</div>
+
 
 <button mat-flat-button (click)="logout()">Logout</button>
 
