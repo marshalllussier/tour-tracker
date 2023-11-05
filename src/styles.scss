@@ -61,3 +61,7 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+.mat-mdc-snack-bar-container .mat-mdc-button.mat-mdc-snack-bar-action:not(:disabled) {
+  color: #1CD760 !important;
+}

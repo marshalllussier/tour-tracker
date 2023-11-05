@@ -1,0 +1,58 @@
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0,);
+  z-index: 9999;
+}
+
+.note-loader {
+  animation: bounce 0.5s infinite alternate;
+}
+
+.quaver {
+  position: relative;
+  width: 30px;
+  height: 80px;
+}
+
+.oval {
+  background-color: #fff;
+  width: 30px;
+  height: 20px;
+  border-radius: 15px / 10px;
+  position: absolute;
+  bottom: 0;
+  transform: rotate(-45deg);
+}
+
+.stem {
+  background-color: #fff;
+  width: 5px;
+  height: 60px;
+  position: absolute;
+  bottom: 0;
+  left: 11px;
+}
+
+.flag {
+  background-color: #fff;
+  width: 15px;
+  height: 25px;
+  position: absolute;
+  bottom: 45px;
+  left: 11px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="15" height="25" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 16H6V4h8v14z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}

@@ -16,7 +16,7 @@ export interface Artist {
   providedIn: 'root'
 })
 export class SpotifyService {
-  private backendUrl = 'http://localhost:3000'; // URL to your Flask backend
+  private backendUrl = 'http://localhost:3000';
 
   constructor(private http: HttpClient) {}
 

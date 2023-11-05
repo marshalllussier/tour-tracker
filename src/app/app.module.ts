@@ -14,6 +14,7 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './home/footer/footer.component';
 import { TestComponent } from './test/test.component';
 import {AuthGuard} from "./services/auth-guard.service";
+import { LoaderComponent } from './dashboard/loader/loader.component';
 
 const appRoutes : Routes = [
   { path: '', component: HomeComponent },
@@ -30,7 +31,8 @@ const appRoutes : Routes = [
     DashboardComponent,
     HomeComponent,
     FooterComponent,
-    TestComponent
+    TestComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class DashboardComponent implements OnInit {
   public username: string | undefined;
+  isLoading = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -39,6 +40,9 @@ export class DashboardComponent implements OnInit {
         }
       }
     });
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 2000);
   }
 
   getUserData(accessToken: string) {
@@ -53,9 +57,9 @@ export class DashboardComponent implements OnInit {
   logout() {
     this.authService.logout();
     this.snackBar.open('Successfully signed out', 'Close', {
-      duration: 2000,
+      duration: 4000,
     });
-    this.router.navigate(['/']); // Redirect to home page
+    this.router.navigate(['/']);
   }
 
 }
