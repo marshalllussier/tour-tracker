@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router} from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AuthService } from './auth.service';
+import { SpotifyService } from './spotify.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
   constructor(
-    private authService: AuthService,
+    private authService: SpotifyService,
     private snackBar: MatSnackBar,
     private router: Router
   ) {}

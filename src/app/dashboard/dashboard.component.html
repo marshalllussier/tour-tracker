@@ -1,6 +1,3 @@
-<p style="color:white">test</p>
-<div class="frequently-asked-questions" id="frequently-asked-questions"></div>
-
 <div *ngIf="username">
   <p style="color:white">Welcome, {{ username }}!</p>
 </div>
@@ -13,6 +10,7 @@
       <p>Genres: {{ artist.genres.join(', ') }}</p>
       <p>Spotify ID: {{ artist.id }}</p>
       <img *ngIf="artist.imageUrl" [src]="artist.imageUrl" alt="{{ artist.name }}" style="max-width: 50px;">
+      <p>Events: {{ artist.events }}</p>
     </li>
   </ul>
 </div>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {ScrollService} from "../services/scroll.service";
-import {AuthService} from "../services/auth.service";
+import {SpotifyService} from "../services/spotify.service";
 
 
 
@@ -16,7 +16,7 @@ export class HomeComponent {
 
 
 
-  constructor(private scrollService : ScrollService, private authService : AuthService) {
+  constructor(private scrollService : ScrollService, private authService : SpotifyService) {
     this.selectRandomImage();
   }
 
