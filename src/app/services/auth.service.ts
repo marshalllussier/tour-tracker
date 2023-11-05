@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment} from "../../assets/environments/environment.dev";
-import {Observable, tap} from "rxjs";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Observable} from "rxjs";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root',
@@ -52,6 +52,13 @@ export class AuthService {
     const array = new Uint32Array(1);
     window.crypto.getRandomValues(array);
     return array[0].toString(16);
+  }
+
+  logout(): void {
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
+    localStorage.removeItem('expiration');
+    localStorage.removeItem('spotify_auth_state');
   }
 
 }

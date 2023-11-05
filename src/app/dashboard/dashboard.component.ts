@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { AuthService } from "../services/auth.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-dashboard',
@@ -12,6 +13,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router : Router,
+    private snackBar: MatSnackBar,
     private authService: AuthService
   ) {}
 
@@ -45,6 +48,14 @@ export class DashboardComponent implements OnInit {
       },
       error => console.error(error)
     );
+  }
+
+  logout() {
+    this.authService.logout();
+    this.snackBar.open('Successfully signed out', 'Close', {
+      duration: 2000,
+    });
+    this.router.navigate(['/']); // Redirect to home page
   }
 
 }

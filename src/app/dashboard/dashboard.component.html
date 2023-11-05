@@ -2,5 +2,9 @@
 <div class="frequently-asked-questions" id="frequently-asked-questions"></div>
 
 <div *ngIf="username">
-  Welcome, {{ username }}!
+  <p style="color:white">Welcome, {{ username }}!</p>
 </div>
+
+
+<button mat-flat-button (click)="logout()">Logout</button>
+
