@@ -1,42 +1,6 @@
 <p style="color:white">test</p>
-<div class="frequently-asked-questions" id="frequently-asked-questions">
+<div class="frequently-asked-questions" id="frequently-asked-questions"></div>
 
-  <div *ngIf="username">
-    Welcome, {{ username }}
-  </div>
-
-</div>
-<div class="something-else">
-
-  <ul>
-    <li *ngFor="let artist of artists">
-      {{ artist.name }}
-      <img style="height: 75px; width:75px;" src="{{artist.imageUrl}}">
-    </li>
-  </ul>
-
-</div>
-
-<p style="color:white">test 2</p>
-
-<div style="color:white" *ngIf="artistEventsArray.length > 0">
-  <h2>Events</h2>
-  <ul>
-    <li *ngFor="let event of artistEventsArray">
-      <h3>{{ event?.name }}</h3>
-      <!--      <img [src]="event?.image" alt="{{ event?.name }}">-->
-      <p>Event Status: {{ event?.eventStatus }}</p>
-      <p>Start Date: {{ event?.startDate }}</p>
-      <p>End Date: {{ event?.endDate }}</p>
-      <p><a [href]="event?.url" target="_blank">Event Details</a></p>
-      <p><a [href]="event?.location?.url" target="_blank">{{ event?.location?.name }}</a></p>
-      <address>
-        {{ event?.location?.address?.streetAddress }},
-        {{ event?.location?.address?.addressLocality }},
-        {{ event?.location?.address?.addressRegion?.name }},
-        {{ event?.location?.address?.addressCountry?.name }},
-        {{ event?.location?.address?.postalCode }}
-      </address>
-    </li>
-  </ul>
+<div *ngIf="username">
+  Welcome, {{ username }}!
 </div>

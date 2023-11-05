@@ -13,11 +13,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './home/footer/footer.component';
 import { TestComponent } from './test/test.component';
+import {AuthGuard} from "./services/auth-guard.service";
 
 const appRoutes : Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
-  // { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService]},
+  // { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'dashboard', component: DashboardComponent},
   { path: 'test', component: TestComponent}
 

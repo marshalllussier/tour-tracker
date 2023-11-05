@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import {ScrollService} from "../services/scroll.service";
+import {AuthService} from "../services/auth.service";
+
+
 
 @Component({
   selector: 'app-home',
@@ -13,15 +16,12 @@ export class HomeComponent {
 
 
 
-  constructor(private scrollService : ScrollService) {
+  constructor(private scrollService : ScrollService, private authService : AuthService) {
     this.selectRandomImage();
   }
 
   authenticateUser() {
-    const clientId = 'ddb750fd92ac45229a5312c00fbef4a2';
-    const redirectUri = 'http://localhost:4200/dashboard';
-    const scope = 'user-library-read user-top-read';
-    window.location.href = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=code&redirect_uri=${redirectUri}&scope=${scope}`;
+    this.authService.authenticateUser();
   }
 
   ngOnInit(): void {
